@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <children>
+        <FlowPane layoutX="50.0" layoutY="107.0" maxHeight="600.0" maxWidth="600.0" prefHeight="300.0" prefWidth="300.0">
+            <children>
+                <Button fx:id="button1" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                <Button fx:id="button2" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                <Button fx:id="button3" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                <Button fx:id="button4" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                <Button fx:id="button5" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                <Button fx:id="button6" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                <Button fx:id="button7" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                <Button fx:id="button8" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                <Button fx:id="button9" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                <Button fx:id="button10" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                <Button fx:id="button11" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                <Button fx:id="button12" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                <Button fx:id="button13" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                <Button fx:id="button14" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                <Button fx:id="button15" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                <Button fx:id="button16" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                <Button fx:id="button17" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                <Button fx:id="button18" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                <Button fx:id="button19" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                <Button fx:id="button20" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                <Button fx:id="button21" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                <Button fx:id="button22" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                <Button fx:id="button23" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                <Button fx:id="button24" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                <Button fx:id="button25" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                <Button fx:id="button26" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                <Button fx:id="button27" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                <Button fx:id="button28" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                <Button fx:id="button29" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                <Button fx:id="button30" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                <Button fx:id="button31" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                <Button fx:id="button32" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                <Button fx:id="button33" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                <Button fx:id="button34" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                <Button fx:id="button35" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+                <Button fx:id="button36" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />
+            </children></FlowPane>
+        <Button fx:id="nextTurnButton" layoutX="422.0" layoutY="382.0" mnemonicParsing="false" onAction="#nextTurn" prefHeight="25.0" prefWidth="127.0" text="Następna tura" />
+        <Label layoutX="422.0" layoutY="107.0" prefHeight="30.0" prefWidth="76.0" text="Gracz 1:">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label layoutX="422.0" layoutY="147.0" text="Gracz 2:">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label fx:id="player1Score" layoutX="526.0" layoutY="107.0" text="0">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label fx:id="player2Score" layoutX="526.0" layoutY="147.0" text="0">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label fx:id="playerTurnInfo" layoutX="422.0" layoutY="235.0" text="Tura Gracza 1">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label layoutX="146.0" layoutY="39.0" text="Gra SOS">
+            <font>
+                <Font size="30.0" />
+            </font>
+        </Label>
+        <Button fx:id="restartButton" layoutX="422.0" layoutY="344.0" mnemonicParsing="false" onAction="#resetGame" prefHeight="25.0" prefWidth="127.0" text="Restart" />
+    </children>
+</AnchorPane>

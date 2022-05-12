@@ -5,4 +5,6 @@ module com.example.sosgame {
 
     opens com.sosgame to javafx.fxml;
     exports com.sosgame;
+    exports sample;
+    opens sample to javafx.fxml;
 }

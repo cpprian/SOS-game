@@ -92,13 +92,75 @@ public class Controller implements Initializable {
     @FXML
     private Button restartButton;
 
+    ArrayList<Button> buttons;
+    private Button clickedButton = null;
+    boolean isSet = false;
+    private String nextSymbol = "S";
+
+    Player p1;       //placeholder
+    Player p2;       //placeholder
+    GameRules rules; //placeholder
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        buttons = new ArrayList<>(Arrays.asList(button1,button2,button3,button4,button5,button6,button7,button8,
+                button9,button10,button11,button12,button13,button14,button15,button16,button17,button18,button19,
+                button20,button21,button22,button23,button24,button25,button26,button27,button28,button29,button30,
+                button31,button32,button33,button34,button35,button36));
 
+        p1 = new Player();      //placeholder
+        p2 = new Player();      //placeholder
+
+        playerTurnInfo.setText("Tura Gracza 1");
+        player1Score.setText("0");
+        player2Score.setText("0");
+        nextTurnButton.setDisable(true);
+        restartButton.setDisable(true);
+        rules = new GameRules();    //placeholder
+        buttons.forEach(button -> button.setText(" "));
+        buttons.forEach(button -> button.setDisable(false));
+
+        buttons.forEach(button ->{
+            setupButton(button);
+            button.setFocusTraversable(false);
+        });
+    }
+
+    private void setupButton(Button button) {
+        button.setOnMouseClicked(mouseEvent -> {
+            setSymbol(button);
+        });
+    }
+
+    public void setSymbol(Button button){
+        if(clickedButton == null || clickedButton == button){
+            clickedButton = button;
+            button.setText(nextSymbol);
+        }
+        else{
+            return;
+        }
+        if(Objects.equals(nextSymbol, "S")){
+            nextTurnButton.setDisable(false);
+            nextSymbol = "O";
+        }
+        else if(Objects.equals(nextSymbol, "O")){
+            nextTurnButton.setDisable(false);
+            nextSymbol = " ";
+        }
+        else{
+            nextTurnButton.setDisable(true);
+            clickedButton = null;
+            nextSymbol = "S";
+        }
     }
 
     public void nextTurn(){
-
+        clickedButton.setDisable(true);
+        nextTurnButton.setDisable(true);
+        isSet = false;
+        nextSymbol = "S";
+        clickedButton = null;
     }
 
     public void resetGame(){

@@ -108,8 +108,8 @@ public class Controller implements Initializable {
                 button20,button21,button22,button23,button24,button25,button26,button27,button28,button29,button30,
                 button31,button32,button33,button34,button35,button36));
 
-        p1 = new Player();      //placeholder
-        p2 = new Player();      //placeholder
+        p1 = new Player(true,1,playerTurnInfo);
+        p2 = new Player(false,2,playerTurnInfo);
 
         playerTurnInfo.setText("Tura Gracza 1");
         player1Score.setText("0");

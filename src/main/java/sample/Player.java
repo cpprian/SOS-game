@@ -11,4 +11,39 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class Player {
+    private int playerScore;
+    private int playerNumber;
+    private boolean isActive;
+    private Label playerTurnInfo;
+
+    Player(boolean active, int pNumber, Label turnInfo){
+        playerScore = 0;
+        isActive = active;
+        playerNumber = pNumber;
+        playerTurnInfo = turnInfo;
+    }
+
+    void increaseScore(int score){
+        playerScore += score;
+    }
+
+    int getScore(){
+        return playerScore;
+    }
+
+    void toggleActive(int score){
+        if(isActive){
+            increaseScore(score);
+            isActive = false;
+        }
+        else{
+            isActive = true;
+            playerTurnInfo.setText("Tura Gracza "+ playerNumber);
+        }
+    }
+
+    boolean getActive(){
+        return isActive;
+    }
+
 }

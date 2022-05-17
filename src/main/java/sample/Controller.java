@@ -156,6 +156,8 @@ public class Controller implements Initializable {
     }
 
     public void nextTurn(){
+        p1.toggleActive(0);
+        p2.toggleActive(0);
         clickedButton.setDisable(true);
         nextTurnButton.setDisable(true);
         isSet = false;

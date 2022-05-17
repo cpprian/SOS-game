@@ -6,9 +6,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class Controller implements Initializable {
+public class Board implements Initializable {
     @FXML
     private Button button1;
     @FXML

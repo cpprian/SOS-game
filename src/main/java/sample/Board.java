@@ -4,86 +4,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.FlowPane;
 
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class Board implements Initializable {
     @FXML
-    private Button button1;
-    @FXML
-    private Button button2;
-    @FXML
-    private Button button3;
-    @FXML
-    private Button button4;
-    @FXML
-    private Button button5;
-    @FXML
-    private Button button6;
-    @FXML
-    private Button button7;
-    @FXML
-    private Button button8;
-    @FXML
-    private Button button9;
-    @FXML
-    private Button button10;
-    @FXML
-    private Button button11;
-    @FXML
-    private Button button12;
-    @FXML
-    private Button button13;
-    @FXML
-    private Button button14;
-    @FXML
-    private Button button15;
-    @FXML
-    private Button button16;
-    @FXML
-    private Button button17;
-    @FXML
-    private Button button18;
-    @FXML
-    private Button button19;
-    @FXML
-    private Button button20;
-    @FXML
-    private Button button21;
-    @FXML
-    private Button button22;
-    @FXML
-    private Button button23;
-    @FXML
-    private Button button24;
-    @FXML
-    private Button button25;
-    @FXML
-    private Button button26;
-    @FXML
-    private Button button27;
-    @FXML
-    private Button button28;
-    @FXML
-    private Button button29;
-    @FXML
-    private Button button30;
-    @FXML
-    private Button button31;
-    @FXML
-    private Button button32;
-    @FXML
-    private Button button33;
-    @FXML
-    private Button button34;
-    @FXML
-    private Button button35;
-    @FXML
-    private Button button36;
+    private FlowPane flowPane;
+
     @FXML
     private Button nextTurnButton;
     @FXML
@@ -106,10 +37,13 @@ public class Board implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        buttons = new ArrayList<>(Arrays.asList(button1,button2,button3,button4,button5,button6,button7,button8,
-                button9,button10,button11,button12,button13,button14,button15,button16,button17,button18,button19,
-                button20,button21,button22,button23,button24,button25,button26,button27,button28,button29,button30,
-                button31,button32,button33,button34,button35,button36));
+        buttons = new ArrayList<>();
+        for (int i = 0; i < 36; i++) {
+            Button b = new Button();
+            b.setStyle("-fx-min-height: 50; -fx-min-width: 50; -fx-max-height: 100; -fx-max-width: 100");
+            buttons.add(b);
+            flowPane.getChildren().add(buttons.get(i));
+        }
 
         p1 = new Player(true,1,playerTurnInfo);
         p2 = new Player(false,2,playerTurnInfo);
@@ -122,7 +56,6 @@ public class Board implements Initializable {
         rules = new GameRules();    //placeholder
         buttons.forEach(button -> button.setText(" "));
         buttons.forEach(button -> button.setDisable(false));
-
         buttons.forEach(button ->{
             setupButton(button);
             button.setFocusTraversable(false);

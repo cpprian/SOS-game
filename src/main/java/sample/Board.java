@@ -40,7 +40,7 @@ public class Board implements Initializable {
         buttons = new ArrayList<>();
         for (int i = 0; i < 36; i++) {
             Button b = new Button();
-            b.setStyle("-fx-min-height: 50; -fx-min-width: 50; -fx-max-height: 100; -fx-max-width: 100");
+            b.getStyleClass().add("button_standard");
             buttons.add(b);
             flowPane.getChildren().add(buttons.get(i));
         }
@@ -79,18 +79,20 @@ public class Board implements Initializable {
         if(Objects.equals(nextSymbol, "S")){
             nextTurnButton.setDisable(false);
             nextSymbol = "O";
-            button.setStyle("-fx-min-height: 50; -fx-min-width: 50; -fx-max-height: 100; -fx-max-width: 100; -fx-background-color: #e84118; -fx-font-size: 18px; -fx-font-weight: 200; -fx-text-fill: #FFFFFF");
+            button.getStyleClass().add("button_S");
         }
         else if(Objects.equals(nextSymbol, "O")){
             nextTurnButton.setDisable(false);
             nextSymbol = " ";
-            button.setStyle("-fx-min-height: 50; -fx-min-width: 50; -fx-max-height: 100; -fx-max-width: 100; -fx-background-color: #00a8ff; -fx-font-size: 18px; -fx-font-weight: 200; -fx-text-fill: #FFFFFF");
+            button.getStyleClass().remove("button_S");
+            button.getStyleClass().add("button_O");
         }
         else{
             nextTurnButton.setDisable(true);
             clickedButton = null;
             nextSymbol = "S";
-            button.setStyle("-fx-min-height: 50; -fx-min-width: 50; -fx-max-height: 100; -fx-max-width: 100");
+            button.getStyleClass().remove("button_O");
+            button.getStyleClass().add("button_standard");
         }
     }
 

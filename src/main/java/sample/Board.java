@@ -79,15 +79,18 @@ public class Board implements Initializable {
         if(Objects.equals(nextSymbol, "S")){
             nextTurnButton.setDisable(false);
             nextSymbol = "O";
+            button.setStyle("-fx-min-height: 50; -fx-min-width: 50; -fx-max-height: 100; -fx-max-width: 100; -fx-background-color: #e84118; -fx-font-size: 18px; -fx-font-weight: 200; -fx-text-fill: #FFFFFF");
         }
         else if(Objects.equals(nextSymbol, "O")){
             nextTurnButton.setDisable(false);
             nextSymbol = " ";
+            button.setStyle("-fx-min-height: 50; -fx-min-width: 50; -fx-max-height: 100; -fx-max-width: 100; -fx-background-color: #00a8ff; -fx-font-size: 18px; -fx-font-weight: 200; -fx-text-fill: #FFFFFF");
         }
         else{
             nextTurnButton.setDisable(true);
             clickedButton = null;
             nextSymbol = "S";
+            button.setStyle("-fx-min-height: 50; -fx-min-width: 50; -fx-max-height: 100; -fx-max-width: 100");
         }
     }
 

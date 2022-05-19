@@ -40,7 +40,7 @@ public class Board implements Initializable {
         buttons = new ArrayList<>();
         for (int i = 0; i < 36; i++) {
             Button b = new Button();
-            b.setStyle("-fx-min-height: 50; -fx-min-width: 50; -fx-max-height: 100; -fx-max-width: 100");
+            b.getStyleClass().add("button_standard");
             buttons.add(b);
             flowPane.getChildren().add(buttons.get(i));
         }
@@ -53,7 +53,7 @@ public class Board implements Initializable {
         player2Score.setText("0");
         nextTurnButton.setDisable(true);
         restartButton.setDisable(true);
-        rules = new GameRules();    //placeholder
+        rules = new GameRules(restartButton, playerTurnInfo);    //placeholder
         buttons.forEach(button -> button.setText(" "));
         buttons.forEach(button -> button.setDisable(false));
         buttons.forEach(button ->{
@@ -79,15 +79,20 @@ public class Board implements Initializable {
         if(Objects.equals(nextSymbol, "S")){
             nextTurnButton.setDisable(false);
             nextSymbol = "O";
+            button.getStyleClass().add("button_S");
         }
         else if(Objects.equals(nextSymbol, "O")){
             nextTurnButton.setDisable(false);
             nextSymbol = " ";
+            button.getStyleClass().remove("button_S");
+            button.getStyleClass().add("button_O");
         }
         else{
             nextTurnButton.setDisable(true);
             clickedButton = null;
             nextSymbol = "S";
+            button.getStyleClass().remove("button_O");
+            button.getStyleClass().add("button_standard");
         }
     }
 
@@ -99,6 +104,7 @@ public class Board implements Initializable {
         isSet = false;
         nextSymbol = "S";
         clickedButton = null;
+        rules.endCheck(p1,p2);
     }
 
     public void resetGame(){

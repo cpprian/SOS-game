@@ -12,6 +12,8 @@ public class SOSGame extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("game.fxml")));
+        root.getStylesheets().add(String.valueOf(
+                Objects.requireNonNull(getClass().getResource("style.css")).toExternalForm()));
         primaryStage.setTitle("SOS game");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

@@ -53,7 +53,7 @@ public class Board implements Initializable {
         player2Score.setText("0");
         nextTurnButton.setDisable(true);
         restartButton.setDisable(true);
-        rules = new GameRules();    //placeholder
+        rules = new GameRules(restartButton, playerTurnInfo);    //placeholder
         buttons.forEach(button -> button.setText(" "));
         buttons.forEach(button -> button.setDisable(false));
         buttons.forEach(button ->{
@@ -99,6 +99,7 @@ public class Board implements Initializable {
         isSet = false;
         nextSymbol = "S";
         clickedButton = null;
+        rules.endCheck(p1,p2);
     }
 
     public void resetGame(){

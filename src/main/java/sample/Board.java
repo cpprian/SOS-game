@@ -29,7 +29,6 @@ public class Board implements Initializable {
     ArrayList<Button> buttons;
     private Button clickedButton = null;
     boolean isSet = false;
-    private String nextSymbol = "S";
 
     Player p1;
     Player p2;
@@ -56,32 +55,32 @@ public class Board implements Initializable {
             setSymbol(button);
         });
     }
-
+    
+    private String getSymbol(Button button){
+        if(Objects.equals(button.getText(), " ")){
+            nextTurnButton.setDisable(false);
+            button.getStyleClass().add("button_S");
+            return "S";
+        }
+        else if(Objects.equals(button.getText(), "S")){
+            nextTurnButton.setDisable(false);
+            button.getStyleClass().remove("button_S");
+            button.getStyleClass().add("button_O");
+            return "O";
+        }
+        else{
+            clickedButton = null;
+            nextTurnButton.setDisable(true);
+            button.getStyleClass().remove("button_O");
+            button.getStyleClass().add("button_standard");
+            return " ";
+        }
+    }
+    
     public void setSymbol(Button button){
         if(clickedButton == null || clickedButton == button){
             clickedButton = button;
-            button.setText(nextSymbol);
-        }
-        else{
-            return;
-        }
-        if(Objects.equals(nextSymbol, "S")){
-            nextTurnButton.setDisable(false);
-            nextSymbol = "O";
-            button.getStyleClass().add("button_S");
-        }
-        else if(Objects.equals(nextSymbol, "O")){
-            nextTurnButton.setDisable(false);
-            nextSymbol = " ";
-            button.getStyleClass().remove("button_S");
-            button.getStyleClass().add("button_O");
-        }
-        else{
-            nextTurnButton.setDisable(true);
-            clickedButton = null;
-            nextSymbol = "S";
-            button.getStyleClass().remove("button_O");
-            button.getStyleClass().add("button_standard");
+            button.setText(getSymbol(button));
         }
     }
 
@@ -91,7 +90,6 @@ public class Board implements Initializable {
         clickedButton.setDisable(true);
         nextTurnButton.setDisable(true);
         isSet = false;
-        nextSymbol = "S";
         clickedButton = null;
         rules.endCheck(p1,p2);
     }

@@ -31,9 +31,9 @@ public class Board implements Initializable {
     boolean isSet = false;
     private String nextSymbol = "S";
 
-    Player p1;       //placeholder
-    Player p2;       //placeholder
-    GameRules rules; //placeholder
+    Player p1;
+    Player p2;
+    GameRules rules;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -44,22 +44,11 @@ public class Board implements Initializable {
             buttons.add(b);
             flowPane.getChildren().add(buttons.get(i));
         }
-
-        p1 = new Player(true,1,playerTurnInfo);
-        p2 = new Player(false,2,playerTurnInfo);
-
-        playerTurnInfo.setText("Tura Gracza 1");
-        player1Score.setText("0");
-        player2Score.setText("0");
-        nextTurnButton.setDisable(true);
-        restartButton.setDisable(true);
-        rules = new GameRules(restartButton, playerTurnInfo);    //placeholder
-        buttons.forEach(button -> button.setText(" "));
-        buttons.forEach(button -> button.setDisable(false));
         buttons.forEach(button ->{
             setupButton(button);
             button.setFocusTraversable(false);
         });
+        resetGame();
     }
 
     private void setupButton(Button button) {
@@ -108,6 +97,18 @@ public class Board implements Initializable {
     }
 
     public void resetGame(){
+        p1 = new Player(true,1,playerTurnInfo);
+        p2 = new Player(false,2,playerTurnInfo);
 
+        playerTurnInfo.setText("Tura Gracza 1");
+        player1Score.setText("0");
+        player2Score.setText("0");
+        nextTurnButton.setDisable(true);
+        restartButton.setDisable(true);
+        rules = new GameRules(buttons, restartButton, playerTurnInfo);
+        buttons.forEach(button -> button.setText(" "));
+        buttons.forEach(button -> button.setDisable(false));
+        buttons.forEach(button -> button.getStyleClass().remove("button_S"));
+        buttons.forEach(button -> button.getStyleClass().remove("button_O"));
     }
 }

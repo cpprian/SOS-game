@@ -85,12 +85,16 @@ public class Board implements Initializable {
     }
 
     public void nextTurn(){
-        p1.toggleActive(0);
-        p2.toggleActive(0);
+        int score = rules.searchForNewSOS(clickedButton);
+        System.out.println(score);
+        p1.toggleActive(score);
+        p2.toggleActive(score);
         clickedButton.setDisable(true);
         nextTurnButton.setDisable(true);
         isSet = false;
         clickedButton = null;
+        player1Score.setText(Integer.toString(p1.getScore()));
+        player2Score.setText(Integer.toString(p2.getScore()));
         rules.endCheck(p1,p2);
     }
 

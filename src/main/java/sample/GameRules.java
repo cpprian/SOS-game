@@ -15,6 +15,8 @@ public class GameRules {
     private Integer turn;
     private final Button restartButton;
     private final Label resultInfo;
+    private int posx;
+    private int posy;
 
     public GameRules(ArrayList<Button> arButtons, Button reset, Label playerTurnInfo) {
         buttons = new Button[6][6];
@@ -31,8 +33,88 @@ public class GameRules {
         turn = 1;
     }
 
-    public int searchForNewSOS(){
-        return 0;
+    public int searchForNewSOS(Button button){
+        int score = 0;
+        setPositions(button);
+        System.out.println(buttons[posx][posy].getText());
+        if(Objects.equals(buttons[posx][posy].getText(), "S")){
+            if(posx > 1 && posy > 1 && Objects.equals(buttons[posx - 1][posy - 1].getText(), "O")){
+                if(Objects.equals(buttons[posx - 1][posy - 1].getText(), "S")){
+                    score++;
+                }
+            }
+            if(posx > 1 && Objects.equals(buttons[posx - 1][posy].getText(), "O")){
+                if(Objects.equals(buttons[posx - 2][posy].getText(), "S")){
+                    score++;
+                }
+            }
+            if(posx > 1 && posy < 4 && Objects.equals(buttons[posx - 1][posy + 1].getText(), "O")){
+                if(Objects.equals(buttons[posx - 2][posy + 2].getText(), "S")){
+                    score++;
+                }
+            }
+            if(posy > 1 && Objects.equals(buttons[posx][posy - 1].getText(), "O")){
+                if(Objects.equals(buttons[posx][posy - 2].getText(), "S")){
+                    score++;
+                }
+            }
+            if(posy < 4 && Objects.equals(buttons[posx][posy + 1].getText(), "O")){
+                if(Objects.equals(buttons[posx][posy + 2].getText(), "S")){
+                    score++;
+                }
+            }
+            if(posx < 4 && posy > 1 && Objects.equals(buttons[posx + 1][posy - 1].getText(), "O")){
+                if(Objects.equals(buttons[posx + 1][posy - 1].getText(), "S")){
+                    score++;
+                }
+            }
+            if(posx < 4 && Objects.equals(buttons[posx + 1][posy].getText(), "O")){
+                if(Objects.equals(buttons[posx + 2][posy].getText(), "S")){
+                    score++;
+                }
+            }
+            if(posx < 4 && posy < 4 && Objects.equals(buttons[posx + 1][posy + 1].getText(), "O")){
+                if(Objects.equals(buttons[posx + 2][posy + 2].getText(), "S")){
+                    score++;
+                }
+            }
+        }
+        else{
+            //pionowe
+            if(posx > 0 && posx < 5 && Objects.equals(buttons[posx - 1][posy].getText(), "S")){
+                if(Objects.equals(buttons[posx +1][posy].getText(), "S")){
+                    score++;
+                }
+            }
+            //poziome
+            if(posy > 0 && posy < 5 && Objects.equals(buttons[posx][posy - 1].getText(), "S")){
+                if(Objects.equals(buttons[posx][posy + 1].getText(), "S")){
+                    score++;
+                }
+            }
+            if(posx > 0 && posy > 0 && posx < 5 && posy < 5){
+                //skos \
+                if(Objects.equals(buttons[posx - 1][posy - 1].getText(), "S") && Objects.equals(buttons[posx + 1][posy + 1].getText(), "S")){
+                    score++;
+                }
+                // skos /
+                if(Objects.equals(buttons[posx + 1][posy - 1].getText(), "O") && Objects.equals(buttons[posx - 1][posy + 1].getText(), "S")){
+                    score++;
+                }
+            }
+        }
+        return score;
+    }
+    private void setPositions(Button button){
+        for(int i = 0; i < 6; i++){
+            for(int j = 0; j < 6; j++){
+                if(button == buttons[i][j]){
+                    posx = i;
+                    posy = j;
+                    break;
+                }
+            }
+        }
     }
 
     public void endCheck(Player p1, Player p2){

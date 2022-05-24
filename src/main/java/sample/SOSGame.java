@@ -16,6 +16,9 @@ public class SOSGame extends Application {
                 Objects.requireNonNull(getClass().getResource("style.css")).toExternalForm()));
         primaryStage.setTitle("SOS game");
         primaryStage.setScene(new Scene(root));
+        primaryStage.setWidth(600);
+        primaryStage.setHeight(520);
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 

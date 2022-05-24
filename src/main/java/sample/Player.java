@@ -34,11 +34,12 @@ public class Player {
     void toggleActive(int score){
         if(isActive){
             increaseScore(score);
-            isActive = false;
+            isActive = score > 0;
         }
         else{
-            isActive = true;
-            playerTurnInfo.setText("Tura Gracza "+ playerNumber);
+            if((isActive = (score == 0))){
+                playerTurnInfo.setText("Tura Gracza " + playerNumber);
+            }
         }
     }
 

@@ -86,7 +86,6 @@ public class Board implements Initializable {
 
     public void nextTurn(){
         int score = rules.searchForNewSOS(clickedButton);
-        System.out.println(score);
         p1.toggleActive(score);
         p2.toggleActive(score);
         clickedButton.setDisable(true);

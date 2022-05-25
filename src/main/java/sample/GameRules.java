@@ -1,15 +1,10 @@
 package sample;
 
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Objects;
-import java.util.ResourceBundle;
 
 public class GameRules {
     private Button[][] buttons;
@@ -41,11 +36,11 @@ public class GameRules {
         //Oś Y jest poziomo a oś X pionowo
         score = findSOSVertical(score);
         score = findSOSHorizontal(score);
-        score = findSOSBias(score);
+        score = findSOSDiagonal(score);
         return score;
     }
 
-    private int findSOSBias(int score) {
+    private int findSOSDiagonal(int score) {
         if (Objects.equals(buttons[posx][posy].getText(), "S")) {
             // na ukos / sprawdza od lewej w górę
             if (posx > 1 && posy < 4 && Objects.equals(buttons[posx - 1][posy + 1].getText(), "O")) {

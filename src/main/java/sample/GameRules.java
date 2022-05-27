@@ -11,8 +11,9 @@ public class GameRules {
     private Integer turn;
     private final Button restartButton;
     private final Label resultInfo;
-    private int posx;
-    private int posy;
+    private final int MAP_SIZE = 6;
+    private final String S = "S";
+    private final String O = "O";
 
 
     public GameRules(ArrayList<Button> arButtons, Button reset, Label playerTurnInfo) {
@@ -32,95 +33,83 @@ public class GameRules {
 
     public int searchForNewSOS(Button button) {
         int score = 0;
-        setPositions(button);
-        //Oś Y jest poziomo a oś X pionowo
-        score = findSOSVertical(score);
-        score = findSOSHorizontal(score);
-        score = findSOSDiagonal(score);
+        int posX = setPositions(button)[1];
+        int posY = setPositions(button)[0];
+
+
+        if (Objects.equals(button.getText(), S))
+            score = searchForNewSOSAfterSClicked(button, posX, posY, score);
+        else if (Objects.equals(button.getText(), O))
+            score = searchForNewSOSAfterOClicked(posX, posY, score);
+
         return score;
     }
 
-    private int findSOSDiagonal(int score) {
-        if (Objects.equals(buttons[posx][posy].getText(), "S")) {
-            // na ukos / sprawdza od lewej w górę
-            if (posx > 1 && posy < 4 && Objects.equals(buttons[posx - 1][posy + 1].getText(), "O")) {
-                if (Objects.equals(buttons[posx - 2][posy + 2].getText(), "S"))
+    private int searchForNewSOSAfterOClicked(int posX, int posY, int score) {
+        //wyszukiwanie pionowo
+        if (checkArrayIndex(posX - 1) && checkArrayIndex(posX + 1))
+            if (Objects.equals(buttons[posY][posX - 1].getText(), S) && Objects.equals(buttons[posY][posX + 1].getText(), S))
+                score++;
+        //wyszukiwanie poziomo
+        if (checkArrayIndex(posY - 1) && checkArrayIndex(posY + 1))
+            if (Objects.equals(buttons[posY + 1][posX].getText(), S))
+                score++;
+
+        if (checkArrayIndex(posY - 1) && checkArrayIndex(posY + 1) && checkArrayIndex(posX - 1) && checkArrayIndex(posX + 1)) {
+            //skos \
+            if (Objects.equals(buttons[posY - 1][posX - 1].getText(), S) && Objects.equals(buttons[posY + 1][posX + 1].getText(), S))
+                score++;
+            // skos /
+            if (Objects.equals(buttons[posY + 1][posX - 1].getText(), S) && Objects.equals(buttons[posY - 1][posX + 1].getText(), S))
+                score++;
+        }
+        return score;
+    }
+
+    private int searchForNewSOSAfterSClicked(Button button, int posX, int posY, int score) {
+        int firstYPosition = checkArrayIndex(posY - 1) ? posY - 1 : posY;
+        for (; firstYPosition <= (checkArrayIndex(posY + 1) ? posY + 1 : posY); firstYPosition++) {
+            int firstXPosition = checkArrayIndex(posX - 1) ? posX - 1 : posX;
+
+            for (; firstXPosition <= (checkArrayIndex(posX + 1) ? posX + 1 : posX); firstXPosition++) {
+                if (!Objects.equals(O, buttons[firstYPosition][firstXPosition].getText()))
+                    continue;
+
+                int secondXPosition = setSecondPosition(posX, firstXPosition);
+                int secondYPosition = setSecondPosition(posY, firstYPosition);
+
+                boolean isChanged = secondXPosition != firstXPosition || secondYPosition != firstYPosition;
+                if (posX != firstXPosition && posY != secondYPosition && (secondXPosition == firstXPosition || secondYPosition == firstYPosition))
+                    isChanged = false;
+
+                if (Objects.equals(button.getText(), buttons[secondYPosition][secondXPosition].getText()) && isChanged)
                     score++;
-            }//na ukos / spradza od prawej w dół
-            else if (posx < 4 && posy > 1 && Objects.equals(buttons[posx + 1][posy - 1].getText(), "O")) {
-                if (Objects.equals(buttons[posx + 2][posy - 2].getText(), "S"))
-                    score++;
-            }
-            // na ukos \ sprawdza od lewej w dół
-            if (posx < 4 && posy < 4 && Objects.equals(buttons[posx + 1][posy + 1].getText(), "O")) {
-                if (Objects.equals(buttons[posx + 2][posy + 2].getText(), "S"))
-                    score++;
-            }//na ukos \ spradza od prawej w górę
-            else if (posx > 1 && posy > 1 && Objects.equals(buttons[posx - 1][posy - 1].getText(), "O")) {
-                if (Objects.equals(buttons[posx - 2][posy - 2].getText(), "S"))
-                    score++;
-            }
-        } else {
-            if (posx > 0 && posy > 0 && posx < 5 && posy < 5) {
-                //skos \
-                if (Objects.equals(buttons[posx - 1][posy - 1].getText(), "S") && Objects.equals(buttons[posx + 1][posy + 1].getText(), "S")) {
-                    score++;
-                }
-                // skos /
-                if (Objects.equals(buttons[posx + 1][posy - 1].getText(), "S") && Objects.equals(buttons[posx - 1][posy + 1].getText(), "S")) {
-                    score++;
-                }
             }
         }
         return score;
     }
 
-    private int findSOSHorizontal(int score) {
-        if (Objects.equals(buttons[posx][posy].getText(), "S")) {
-            if (posy > 1 && Objects.equals(buttons[posx][posy - 1].getText(), "O")) {
-                if (Objects.equals(buttons[posx][posy - 2].getText(), "S"))
-                    score++;
-            } else if (posy < 4 && Objects.equals(buttons[posx][posy + 1].getText(), "O")) {
-                if (Objects.equals(buttons[posx][posy + 2].getText(), "S"))
-                    score++;
-            }
-        } else {
-            if (posx > 0 && posx < 5 && Objects.equals(buttons[posx - 1][posy].getText(), "S"))
-                if (Objects.equals(buttons[posx + 1][posy].getText(), "S"))
-                    score++;
-        }
-        return score;
+    private int setSecondPosition(int pos, int firstPosition) {
+        int secondPosition = firstPosition;
+        if (firstPosition < pos && checkArrayIndex(firstPosition - 1))
+            secondPosition--;
+        else if (firstPosition > pos && checkArrayIndex(secondPosition + 1))
+            secondPosition++;
+
+        return secondPosition;
     }
 
-    private int findSOSVertical(int score) {
-        if (Objects.equals(buttons[posx][posy].getText(), "S")) {
-            if (posx > 1 && Objects.equals(buttons[posx - 1][posy].getText(), "O")) {
-                if (Objects.equals(buttons[posx - 2][posy].getText(), "S"))
-                    score++;
-            } else if (posx <4) {
-                if (Objects.equals(buttons[posx + 1][posy].getText(), "O"))
-                    if (Objects.equals(buttons[posx + 2][posy].getText(), "S"))
-                        score++;
-            }
 
-        } else {
-            if (posy > 0 && posy < 5 && Objects.equals(buttons[posx][posy - 1].getText(), "S"))
-                if (Objects.equals(buttons[posx][posy + 1].getText(), "S"))
-                    score++;
-        }
-        return score;
+    private boolean checkArrayIndex(int position) {
+        return position >= 0 && position < MAP_SIZE;
     }
 
-    private void setPositions(Button button) {
-        for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 6; j++) {
-                if (button == buttons[i][j]) {
-                    posx = i;
-                    posy = j;
-                    break;
-                }
-            }
-        }
+    private int[] setPositions(Button button) {
+        for (int i = 0; i < MAP_SIZE; i++)
+            for (int j = 0; j < MAP_SIZE; j++)
+                if (button == buttons[i][j])
+                    return new int[]{i, j};
+        return null;
     }
 
     public void endCheck(Player p1, Player p2) {

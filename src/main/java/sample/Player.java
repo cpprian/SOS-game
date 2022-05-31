@@ -38,11 +38,14 @@ public class Player {
             if(!(isActive = score > 0)){
                 deactivateFrame();
             }
+            else{
+                bonusTurnInfo();
+            }
         }
         else{
             if((isActive = (score == 0))){
                 activateFrame();
-                playerTurnInfo.setText("Tura Gracza " + playerNumber);
+                newTurnInfo();
             }
         }
     }
@@ -53,6 +56,16 @@ public class Player {
     private void deactivateFrame(){
         playerName.getStyleClass().remove("activePlayerName");
         playerFrame.getStyleClass().remove("frame");
+    }
+    private void bonusTurnInfo(){
+        playerTurnInfo.getStyleClass().remove("infoText");
+        playerTurnInfo.getStyleClass().add("infoTextBonus");
+        playerTurnInfo.setText("Bonusowa tura!");
+    }
+    private void newTurnInfo(){
+        playerTurnInfo.getStyleClass().remove("infoTextBonus");
+        playerTurnInfo.getStyleClass().add("infoText");
+        playerTurnInfo.setText("Tura Gracza " + playerNumber);
     }
 
     boolean getActive(){

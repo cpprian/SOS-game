@@ -6,20 +6,20 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Board">
     <children>
-<!--        <Button fx:id="button" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />-->
+        <!--        <Button fx:id="button" maxHeight="100.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" />-->
         <FlowPane fx:id="flowPane" layoutX="50.0" layoutY="107.0" maxHeight="600.0" maxWidth="600.0" prefHeight="300.0" prefWidth="300.0" />
         <Button fx:id="nextTurnButton" layoutX="422.0" layoutY="382.0" mnemonicParsing="false" onAction="#nextTurn" prefHeight="25.0" prefWidth="127.0" text="Następna tura" />
-        <Label layoutX="422.0" layoutY="107.0" prefHeight="30.0" prefWidth="76.0" text="Gracz 1:">
+        <Label fx:id="player1Name" layoutX="419.0" layoutY="100.0" prefHeight="30.0" prefWidth="76.0" text="Gracz 1:">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <Label layoutX="422.0" layoutY="147.0" text="Gracz 2:">
+        <Label fx:id="player2Name" layoutX="422.0" layoutY="147.0" text="Gracz 2:">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <Label fx:id="player1Score" layoutX="526.0" layoutY="107.0" text="0">
+        <Label fx:id="player1Score" layoutX="526.0" layoutY="100.0" text="0">
             <font>
                 <Font size="20.0" />
             </font>
@@ -29,7 +29,7 @@
                 <Font size="20.0" />
             </font>
         </Label>
-        <Label fx:id="playerTurnInfo" layoutX="422.0" layoutY="235.0" text="Tura Gracza 1">
+        <Label fx:id="playerTurnInfo" layoutX="406.0" layoutY="235.0" text="Tura Gracza 1">
             <font>
                 <Font size="20.0" />
             </font>
@@ -40,5 +40,7 @@
             </font>
         </Label>
         <Button fx:id="restartButton" layoutX="422.0" layoutY="344.0" mnemonicParsing="false" onAction="#resetGame" prefHeight="25.0" prefWidth="127.0" text="Restart" />
+        <Pane fx:id="player1Frame" layoutX="393.0" layoutY="93.0" prefHeight="45.0" prefWidth="164.0" />
+        <Pane fx:id="player2Frame" layoutX="393.0" layoutY="140.0" prefHeight="45.0" prefWidth="164.0" />
     </children>
 </AnchorPane>

@@ -41,7 +41,6 @@ public class Board implements Initializable {
 
     ArrayList<Button> buttons;
     private Button clickedButton = null;
-    boolean isSet = false;
 
     Player player1;
     Player player2;
@@ -103,7 +102,6 @@ public class Board implements Initializable {
         player2.toggleActive(score);
         clickedButton.setDisable(true);
         nextTurnButton.setDisable(true);
-        isSet = false;
         clickedButton = null;
         rules.endCheck(player1, player2);
     }

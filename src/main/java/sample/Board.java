@@ -113,8 +113,13 @@ public class Board implements Initializable {
         playerTurnInfo.setText("Tura Gracza 1");
         player1Score.setText("0");
         player2Score.setText("0");
+        player1Frame.getStyleClass().remove("frame");
+        player1Name.getStyleClass().remove("activePlayerName");
+        player2Frame.getStyleClass().remove("frame");
+        player2Name.getStyleClass().remove("activePlayerName");
         player1Frame.getStyleClass().add("frame");
         player1Name.getStyleClass().add("activePlayerName");
+        playerTurnInfo.getStyleClass().remove("infoTextBonus");
         nextTurnButton.setDisable(true);
         restartButton.setDisable(true);
         rules = new GameRules(buttons, restartButton, playerTurnInfo);

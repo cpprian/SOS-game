@@ -58,14 +58,18 @@ public class Player {
         playerFrame.getStyleClass().remove("frame");
     }
     private void bonusTurnInfo(){
-        playerTurnInfo.getStyleClass().remove("infoText");
+        clearStyleInfo();
         playerTurnInfo.getStyleClass().add("infoTextBonus");
         playerTurnInfo.setText("Bonusowa tura!");
     }
     private void newTurnInfo(){
-        playerTurnInfo.getStyleClass().remove("infoTextBonus");
+        clearStyleInfo();
         playerTurnInfo.getStyleClass().add("infoText");
         playerTurnInfo.setText("Tura Gracza " + playerNumber);
+    }
+    private void clearStyleInfo(){
+        playerTurnInfo.getStyleClass().remove("infoText");
+        playerTurnInfo.getStyleClass().remove("infoTextBonus");
     }
 
     boolean getActive(){

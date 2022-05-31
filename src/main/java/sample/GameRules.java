@@ -116,6 +116,7 @@ public class GameRules {
         turn++;
         if (turn > 36) {
             restartButton.setDisable(false);
+            resultInfo.getStyleClass().remove("infoTextBonus");
             if (p1.getScore() > p2.getScore()) {
                 resultInfo.setText("Wygrał Gracz 1!");
             } else if (p2.getScore() > p1.getScore()) {

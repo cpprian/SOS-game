@@ -52,7 +52,7 @@ public class GameRules {
                 score++;
         //wyszukiwanie poziomo
         if (checkArrayIndex(posY - 1) && checkArrayIndex(posY + 1))
-            if (Objects.equals(buttons[posY + 1][posX].getText(), S))
+            if (Objects.equals(buttons[posY + 1][posX].getText(), S) && Objects.equals(buttons[posY - 1][posX].getText(), S))
                 score++;
 
         if (checkArrayIndex(posY - 1) && checkArrayIndex(posY + 1) && checkArrayIndex(posX - 1) && checkArrayIndex(posX + 1)) {

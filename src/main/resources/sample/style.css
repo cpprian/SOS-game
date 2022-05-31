@@ -15,3 +15,11 @@
 .button_O {
     -fx-background-color: #00a8ff;
 }
+.frame {
+    -fx-border-color:  #178a25;
+    -fx-border-width:  5px;
+    -fx-border-radius:  5px;
+}
+.activePlayerName{
+    -fx-font-weight: bold;
+}

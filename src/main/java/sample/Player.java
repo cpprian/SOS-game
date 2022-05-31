@@ -1,30 +1,31 @@
 package sample;
 
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import javafx.scene.layout.Pane;
 
 public class Player {
     private int playerScore;
     private int playerNumber;
     private boolean isActive;
     private Label playerTurnInfo;
+    private Label playerName;
+    private Pane playerFrame;
+    private Label scoreCounter;
 
-    Player(boolean active, int pNumber, Label turnInfo){
+
+    Player(boolean active, int pNumber, Label turnInfo, Label name, Label counter, Pane frame){
         playerScore = 0;
         isActive = active;
         playerNumber = pNumber;
         playerTurnInfo = turnInfo;
+        playerName = name;
+        playerFrame = frame;
+        scoreCounter = counter;
     }
 
     void increaseScore(int score){
         playerScore += score;
+        scoreCounter.setText(Integer.toString(playerScore));
     }
 
     int getScore(){
@@ -34,13 +35,24 @@ public class Player {
     void toggleActive(int score){
         if(isActive){
             increaseScore(score);
-            isActive = score > 0;
+            if(!(isActive = score > 0)){
+                deactivateFrame();
+            }
         }
         else{
             if((isActive = (score == 0))){
+                activateFrame();
                 playerTurnInfo.setText("Tura Gracza " + playerNumber);
             }
         }
+    }
+    private void activateFrame(){
+        playerName.getStyleClass().add("activePlayerName");
+        playerFrame.getStyleClass().add("frame");
+    }
+    private void deactivateFrame(){
+        playerName.getStyleClass().remove("activePlayerName");
+        playerFrame.getStyleClass().remove("frame");
     }
 
     boolean getActive(){

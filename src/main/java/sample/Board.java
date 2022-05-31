@@ -5,6 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -14,7 +15,6 @@ import java.util.ResourceBundle;
 public class Board implements Initializable {
     @FXML
     private FlowPane flowPane;
-
     @FXML
     private Button nextTurnButton;
     @FXML
@@ -26,12 +26,25 @@ public class Board implements Initializable {
     @FXML
     private Button restartButton;
 
+    @FXML
+    private Pane player1Frame;
+    @FXML
+    private Pane player2Frame;
+
+    @FXML
+    private Label player1Name;
+    @FXML
+    private Label player2Name;
+
+
+
+
     ArrayList<Button> buttons;
     private Button clickedButton = null;
     boolean isSet = false;
 
-    Player p1;
-    Player p2;
+    Player player1;
+    Player player2;
     GameRules rules;
 
     @Override
@@ -55,7 +68,7 @@ public class Board implements Initializable {
             setSymbol(button);
         });
     }
-    
+
     private String getSymbol(Button button){
         if(Objects.equals(button.getText(), " ")){
             nextTurnButton.setDisable(false);
@@ -76,7 +89,7 @@ public class Board implements Initializable {
             return " ";
         }
     }
-    
+
     public void setSymbol(Button button){
         if(clickedButton == null || clickedButton == button){
             clickedButton = button;
@@ -86,24 +99,24 @@ public class Board implements Initializable {
 
     public void nextTurn(){
         int score = rules.searchForNewSOS(clickedButton);
-        p1.toggleActive(score);
-        p2.toggleActive(score);
+        player1.toggleActive(score);
+        player2.toggleActive(score);
         clickedButton.setDisable(true);
         nextTurnButton.setDisable(true);
         isSet = false;
         clickedButton = null;
-        player1Score.setText(Integer.toString(p1.getScore()));
-        player2Score.setText(Integer.toString(p2.getScore()));
-        rules.endCheck(p1,p2);
+        rules.endCheck(player1, player2);
     }
 
     public void resetGame(){
-        p1 = new Player(true,1,playerTurnInfo);
-        p2 = new Player(false,2,playerTurnInfo);
+        player1 = new Player(true,1,playerTurnInfo,player1Name,player1Score,player1Frame);
+        player2 = new Player(false,2,playerTurnInfo,player2Name,player2Score,player2Frame);
 
         playerTurnInfo.setText("Tura Gracza 1");
         player1Score.setText("0");
         player2Score.setText("0");
+        player1Frame.getStyleClass().add("frame");
+        player1Name.getStyleClass().add("activePlayerName");
         nextTurnButton.setDisable(true);
         restartButton.setDisable(true);
         rules = new GameRules(buttons, restartButton, playerTurnInfo);

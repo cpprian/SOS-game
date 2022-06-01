@@ -125,7 +125,6 @@ public class Board implements Initializable {
         rules = new GameRules(buttons, restartButton, playerTurnInfo);
         buttons.forEach(button -> button.setText(" "));
         buttons.forEach(button -> button.setDisable(false));
-        buttons.forEach(button -> button.getStyleClass().remove("button_S"));
-        buttons.forEach(button -> button.getStyleClass().remove("button_O"));
+        buttons.forEach(button -> setButtonStyle(button,"button_standard"));
     }
 }

@@ -37,8 +37,6 @@ public class Board implements Initializable {
     private Label player2Name;
 
 
-
-
     ArrayList<Button> buttons;
     private Button clickedButton = null;
 
@@ -68,23 +66,25 @@ public class Board implements Initializable {
         });
     }
 
+    private void setButtonStyle(Button button, String style){
+        button.getStyleClass().remove("button_S");
+        button.getStyleClass().remove("button_O");
+        button.getStyleClass().add(style);
+    }
     private String getSymbol(Button button){
+        nextTurnButton.setDisable(false);
         if(Objects.equals(button.getText(), " ")){
-            nextTurnButton.setDisable(false);
-            button.getStyleClass().add("button_S");
+            setButtonStyle(button,"button_S");
             return "S";
         }
         else if(Objects.equals(button.getText(), "S")){
-            nextTurnButton.setDisable(false);
-            button.getStyleClass().remove("button_S");
-            button.getStyleClass().add("button_O");
+            setButtonStyle(button,"button_O");
             return "O";
         }
         else{
             clickedButton = null;
             nextTurnButton.setDisable(true);
-            button.getStyleClass().remove("button_O");
-            button.getStyleClass().add("button_standard");
+            setButtonStyle(button,"button_standard");
             return " ";
         }
     }
@@ -125,7 +125,6 @@ public class Board implements Initializable {
         rules = new GameRules(buttons, restartButton, playerTurnInfo);
         buttons.forEach(button -> button.setText(" "));
         buttons.forEach(button -> button.setDisable(false));
-        buttons.forEach(button -> button.getStyleClass().remove("button_S"));
-        buttons.forEach(button -> button.getStyleClass().remove("button_O"));
+        buttons.forEach(button -> setButtonStyle(button,"button_standard"));
     }
 }

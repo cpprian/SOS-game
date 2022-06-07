@@ -17,7 +17,7 @@ public class SOSGame extends Application {
         primaryStage.setTitle("SOS game");
         primaryStage.setScene(new Scene(root));
         primaryStage.setWidth(600);
-        primaryStage.setHeight(520);
+        primaryStage.setHeight(500);
         primaryStage.setResizable(false);
         primaryStage.show();
     }

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class GameRules {
-    private Button[][] buttons;
+    private final Button[][] buttons;
     private Integer turn;
     private final Button restartButton;
     private final Label resultInfo;

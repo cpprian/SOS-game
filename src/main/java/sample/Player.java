@@ -4,14 +4,13 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
 public class Player {
+    private final int playerNumber;
+    private final Label playerTurnInfo;
+    private final Label playerName;
+    private final Pane playerFrame;
+    private final Label scoreCounter;
     private int playerScore;
-    private int playerNumber;
     private boolean isActive;
-    private Label playerTurnInfo;
-    private Label playerName;
-    private Pane playerFrame;
-    private Label scoreCounter;
-
 
     Player(boolean active, int pNumber, Label turnInfo, Label name, Label counter, Pane frame){
         playerScore = 0;

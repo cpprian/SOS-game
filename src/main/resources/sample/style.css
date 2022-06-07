@@ -20,14 +20,14 @@
     -fx-border-width:  5px;
     -fx-border-radius:  5px;
 }
-.activePlayerName{
-    -fx-font-weight: bold;
-}
 .infoText{
     -fx-font-weight: regular;
-    -fx-text-fill: #000000;
+    -fx-text-fill: #FFFFFF;
 }
 .infoTextBonus{
     -fx-font-weight: bold;
     -fx-text-fill: #178a25;
+}
+.activePlayerName{
+    -fx-font-weight: bold;
 }

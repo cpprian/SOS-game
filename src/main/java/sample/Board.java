@@ -36,6 +36,9 @@ public class Board implements Initializable {
     @FXML
     private Label player2Name;
 
+    @FXML
+    private Pane instructionPane;
+
 
     ArrayList<Button> buttons;
     private Button clickedButton = null;
@@ -104,6 +107,10 @@ public class Board implements Initializable {
         nextTurnButton.setDisable(true);
         clickedButton = null;
         rules.endCheck(player1, player2);
+    }
+
+    public void hideInstruction(){
+        instructionPane.setVisible(false);
     }
 
     public void resetGame(){

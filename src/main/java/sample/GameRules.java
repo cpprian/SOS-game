@@ -11,16 +11,16 @@ public class GameRules {
     private Integer turn;
     private final Button restartButton;
     private final Label resultInfo;
-    private final int MAP_SIZE = 6;
+    private final int mapSize;
     private final String S = "S";
     private final String O = "O";
 
 
-    public GameRules(ArrayList<Button> arButtons, Button reset, Label playerTurnInfo) {
-        buttons = new Button[6][6];
+    public GameRules(ArrayList<Button> arButtons, Button reset, Label playerTurnInfo, int mapSize) {
+        buttons = new Button[mapSize][mapSize];
         int button = 0;
-        for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 6; j++) {
+        for (int i = 0; i < mapSize; i++) {
+            for (int j = 0; j < mapSize; j++) {
                 buttons[i][j] = arButtons.get(button);
                 button++;
             }
@@ -29,13 +29,14 @@ public class GameRules {
         restartButton.setDisable(true);
         resultInfo = playerTurnInfo;
         turn = 1;
+        this.mapSize = mapSize;
     }
+
 
     public int searchForNewSOS(Button button) {
         int score = 0;
         int posX = setPositions(button)[1];
         int posY = setPositions(button)[0];
-
 
         if (Objects.equals(button.getText(), S))
             score = searchForNewSOSAfterSClicked(button, posX, posY, score);
@@ -101,12 +102,12 @@ public class GameRules {
 
 
     private boolean checkArrayIndex(int position) {
-        return position >= 0 && position < MAP_SIZE;
+        return position >= 0 && position < mapSize;
     }
 
     private int[] setPositions(Button button) {
-        for (int i = 0; i < MAP_SIZE; i++)
-            for (int j = 0; j < MAP_SIZE; j++)
+        for (int i = 0; i < mapSize; i++)
+            for (int j = 0; j < mapSize; j++)
                 if (button == buttons[i][j])
                     return new int[]{i, j};
         return null;
@@ -114,7 +115,7 @@ public class GameRules {
 
     public void endCheck(Player p1, Player p2) {
         turn++;
-        if (turn > 36) {
+        if (turn > mapSize * mapSize) {
             restartButton.setDisable(false);
             resultInfo.getStyleClass().remove("infoTextBonus");
             if (p1.getScore() > p2.getScore()) {

@@ -46,7 +46,7 @@ public class Board implements Initializable {
     Player player1;
     Player player2;
     GameRules rules;
-    private int mapSize = 6;
+    private int mapSize = Enter.map;
     private final int MAX_MAP_SIZE = 9;
     private final int BUTTON_SIZE = 50;
     private final int FLOW_PANE_X = 41;

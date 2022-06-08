@@ -25,7 +25,7 @@ public class Enter extends Application {
     private TextField mapSize;
     @FXML
     private Button enterButton;
-    private static int map;
+    public static int map;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -34,8 +34,8 @@ public class Enter extends Application {
                 Objects.requireNonNull(getClass().getResource("style.css")).toExternalForm()));
         primaryStage.setTitle("SOS game");
         primaryStage.setScene(new Scene(root));
-        primaryStage.setWidth(600);
-        primaryStage.setHeight(500);
+        primaryStage.setWidth(700);
+        primaryStage.setHeight(570);
         primaryStage.setResizable(false);
         primaryStage.show();
     }
@@ -61,9 +61,10 @@ public class Enter extends Application {
 
     @FXML
     protected void initGame(ActionEvent event) throws Exception {
-        Parent page = FXMLLoader.load(Objects.requireNonNull(SOSGame.class.getResource("game.fxml")),
-                null, new JavaFXBuilderFactory());
-        Scene scene = new Scene(page,800, 1010);
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("game.fxml")));
+        root.getStylesheets().add(String.valueOf(
+                Objects.requireNonNull(getClass().getResource("style.css")).toExternalForm()));
+        Scene scene = new Scene(root,570, 700);
         scene.setFill(Color.BLACK);
         Stage gameStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         gameStage.setScene(scene);

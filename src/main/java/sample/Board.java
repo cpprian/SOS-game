@@ -46,12 +46,12 @@ public class Board implements Initializable {
     Player player1;
     Player player2;
     GameRules rules;
-    int MAP_SIZE = 9;
+    int mapSize = 9;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         buttons = new ArrayList<>();
-        for (int i = 0; i < MAP_SIZE * MAP_SIZE; i++) {
+        for (int i = 0; i < mapSize * mapSize; i++) {
             Button b = new Button();
             b.getStyleClass().add("button_standard");
             buttons.add(b);
@@ -129,7 +129,7 @@ public class Board implements Initializable {
         playerTurnInfo.getStyleClass().remove("infoTextBonus");
         nextTurnButton.setDisable(true);
         restartButton.setDisable(true);
-        rules = new GameRules(buttons, restartButton, playerTurnInfo);
+        rules = new GameRules(buttons, restartButton, playerTurnInfo, mapSize);
         buttons.forEach(button -> button.setText(" "));
         buttons.forEach(button -> button.setDisable(false));
         buttons.forEach(button -> setButtonStyle(button, "button_standard"));

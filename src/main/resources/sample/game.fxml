@@ -61,19 +61,20 @@
                 <Font size="30.0" />
             </font>
         </Label>
-        <Pane fx:id="instructionPane" layoutX="-1.0" layoutY="-4.0" prefHeight="478.0" prefWidth="700.0" style="-fx-background-color: #264085;" visible="false">
+        <Pane fx:id="instructionPane" layoutX="-1.0" layoutY="-4.0" prefHeight="478.0" prefWidth="700.0" style="-fx-background-color: #264085;">
             <children>
-                <Button fx:id="instructionButton" layoutX="230.0" layoutY="419.0" mnemonicParsing="false" onAction="#hideInstruction" prefHeight="45.0" prefWidth="140.0" text="Start">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#263e85" height="566.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0" />
+                <Button fx:id="instructionButton" layoutX="269.0" layoutY="429.0" mnemonicParsing="false" onAction="#hideInstruction" prefHeight="45.0" prefWidth="140.0" text="Start">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Button>
-                <TextField alignment="TOP_CENTER" editable="false" layoutX="189.0" layoutY="6.0" prefHeight="24.0" prefWidth="223.0" text="Zasady gry">
+                <TextField alignment="TOP_CENTER" editable="false" layoutX="239.0" layoutY="6.0" prefHeight="24.0" prefWidth="223.0" text="Zasady gry">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </TextField>
-                <TextArea editable="false" layoutX="41.0" layoutY="49.0" prefHeight="366.0" prefWidth="518.0" text="Cel gry:             Utwórz jak najwięcej napisów SOS&#10;&#10;Przebieg gry:    Gracze klikają pola, aby wstawić znak 'S' &#10;                         lub 'O', pierwsze kliknięcie powoduje&#10;                         wstawienie 'S', drugie wstawienie 'O', a&#10;                         trzecie wyczyszczenie pola. W jednej turze&#10;                         gracz może wypełnić tylko jedno pole. Po&#10;                         dokonaniu decyzji następuje przekazanie&#10;                         tury poprzez wciśnięcie pola &quot;następna tura&quot;&#10;&#10;Koniec gry:       Gra się kończy gdy wszystkie pola zostaną&#10;                         zapełnione. Wygrywa gracz, który utworzył&#10;                         więcej napisów SOS">
+                <TextArea editable="false" layoutX="91.0" layoutY="56.0" prefHeight="366.0" prefWidth="518.0" text="Cel gry:             Utwórz jak najwięcej napisów SOS&#10;&#10;Przebieg gry:    Gracze klikają pola, aby wstawić znak 'S' &#10;                         lub 'O', pierwsze kliknięcie powoduje&#10;                         wstawienie 'S', drugie wstawienie 'O', a&#10;                         trzecie wyczyszczenie pola. W jednej turze&#10;                         gracz może wypełnić tylko jedno pole. Po&#10;                         dokonaniu decyzji następuje przekazanie&#10;                         tury poprzez wciśnięcie pola &quot;następna tura&quot;&#10;&#10;Koniec gry:       Gra się kończy gdy wszystkie pola zostaną&#10;                         zapełnione. Wygrywa gracz, który utworzył&#10;                         więcej napisów SOS">
                     <font>
                         <Font size="18.0" />
                     </font>

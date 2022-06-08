@@ -25,7 +25,7 @@ public class Enter extends Application {
     private TextField mapSize;
     @FXML
     private Button enterButton;
-    public static int map;
+    private static int map;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -48,13 +48,13 @@ public class Enter extends Application {
         enterButton.setOnMouseClicked(e -> {
             try {
                 map = Integer.parseInt(mapSize.getText());
-                if (map > 10 || map < 3) {
-                    mapSize.setText("Rozmiar planszy musi być z przedziału <3, 10>");
+                if (map >= 3 && map <= 9) {
+                    mapSize.setPromptText("Rozmiar planszy musi być z przedziału <3, 10>");
                 }
 
                 initGame(actionEvent);
             } catch (Exception ex) {
-                mapSize.setText("Rozmiar planszy musi być z przedziału <3, 10>");
+                mapSize.setPromptText("Rozmiar planszy musi być z przedziału <3, 10>");
             }
         });
     }
@@ -70,5 +70,13 @@ public class Enter extends Application {
         gameStage.setScene(scene);
         gameStage.show();
         gameStage.centerOnScreen();
+    }
+
+    public static void setMap(int m) {
+        map = m;
+    }
+
+    public static int getMap() {
+        return map;
     }
 }

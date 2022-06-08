@@ -37,8 +37,6 @@ public class GameRules {
         int score = 0;
         int posX = setPositions(button)[1];
         int posY = setPositions(button)[0];
-        System.out.println(posX);
-        System.out.println(posY);
 
         if (Objects.equals(button.getText(), S))
             score = searchForNewSOSAfterSClicked(button, posX, posY, score);

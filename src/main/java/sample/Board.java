@@ -46,11 +46,20 @@ public class Board implements Initializable {
     Player player1;
     Player player2;
     GameRules rules;
-    int mapSize = 9;
+    private int mapSize = 6;
+    private final int MAX_MAP_SIZE = 9;
+    private final int BUTTON_SIZE = 50;
+    private final int FLOW_PANE_X = 41;
+    private final int FLOW_PANE_Y = 76;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         buttons = new ArrayList<>();
+        flowPane.setPrefHeight(mapSize * BUTTON_SIZE);
+        flowPane.setPrefWidth(mapSize * BUTTON_SIZE);
+        flowPane.setLayoutX(FLOW_PANE_X + (BUTTON_SIZE / 2 * (MAX_MAP_SIZE - mapSize)));
+        flowPane.setLayoutY(FLOW_PANE_Y + (BUTTON_SIZE / 2 * (MAX_MAP_SIZE - mapSize)));
+
         for (int i = 0; i < mapSize * mapSize; i++) {
             Button b = new Button();
             b.getStyleClass().add("button_standard");
